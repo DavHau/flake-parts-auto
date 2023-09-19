@@ -23,7 +23,7 @@ in {
   imports = flakePartsModules;
 
   options.flake.modules = lib.mkOption {
-    type = lib.types.anything;
+    type = lib.types.attrsOf (lib.types.attrsOf lib.types.raw);
   };
 
   # generates future flake outputs: `modules.<kind>.<module-name>`
