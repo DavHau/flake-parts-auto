@@ -30,6 +30,7 @@ in {
   config.flake.modules = lib.mapAttrs (kind: _: mapModules kind) moduleKinds;
 
   # comapt to current schema: `nixosModules` / `darwinModules`
+  config.flake.flakeModules = config.flake.modules.flake-parts or {};
   config.flake.nixosModules = config.flake.modules.nixos or {};
   config.flake.darwinModules = config.flake.modules.darwin or {};
 }
