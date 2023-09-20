@@ -18,6 +18,26 @@
         "type": "github"
       }
     },
+    "flake-parts-auto": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 0,
+        "narHash": "sha256-41qJ8U/hEBvwGn+tIuF136Nw1Gs47SmBYRQw/TIyZ7M=",
+        "path": "../../.",
+        "type": "path"
+      },
+      "original": {
+        "path": "../../.",
+        "type": "path"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1694959747,
@@ -55,6 +75,7 @@
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
+        "flake-parts-auto": "flake-parts-auto",
         "nixpkgs": "nixpkgs"
       }
     }

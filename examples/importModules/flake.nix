@@ -11,7 +11,7 @@
   };
 
   outputs = inputs@{ flake-parts, self, ... }:
-  flake-parts.mkFlake { inherit inputs; } {
+  flake-parts.lib.mkFlake { inherit inputs; } {
     imports = [
       (inputs.flake-parts-auto.importModules ../modules)
     ];
