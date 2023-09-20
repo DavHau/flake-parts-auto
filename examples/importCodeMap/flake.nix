@@ -15,16 +15,23 @@
   flake-parts.lib.mkFlake { inherit inputs; } {
     systems = [ "x86_64-linux" ];
     imports = [
-      (inputs.flake-parts-auto.importCodeMap (with inputs.flake-parts-auto.lib;{
+      (inputs.flake-parts-auto.importCodeMap (with inputs.flake-parts-auto.lib.types;{
         # imports AND exports flake-parts modules from ./modules/flake-parts/<modulename>.nix
-        flake-parts = types.modules.flake-parts {};
+        flake-parts = modules {};
         # exports flake-parts modules from ./modules/custom-folder/<modulename>.nix
-        custom-folder = types.modules.flake-parts {import=false;};
+        custom-folder = modules {import=false;};
         # imports flake-parts modules from ./modules/private-flake-parts/<modulename>.nix
-        private-flake-parts = types.modules.flake-parts {export=false;};
+        private-flake-parts = modules {export=false;};
+
+        nested = {
+          some_module = module {export=false;};
+        };
 
 
-        
+        nested_multi = directories (modules {export=false;});
+
+        # TODO: when doing this, it gives bad error message. It should be better, to indicate that it tries to import D
+        #nested_multi = directories (modules {export=false;});
 
 
       }) ./modules )
